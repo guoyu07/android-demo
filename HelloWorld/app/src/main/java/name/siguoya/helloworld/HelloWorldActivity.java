@@ -12,7 +12,7 @@ import android.util.Log;
 public class HelloWorldActivity extends AppCompatActivity {
 
     //使用logt可以自动生成此行代码
-    private static final String TAG = "HelloWorldActivity";
+    private static final String TAG="HelloWorldActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

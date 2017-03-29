@@ -35,10 +35,11 @@ dependencies {
     //指定本地依赖：依赖libs目录下的所有jar文件
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //指定远程依赖：依赖com.android.support.test.espresso域名下、版本为2.2.2的espresso-core库
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.1'
+    //androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    //    exclude group: 'com.android.support', module: 'support-annotations'
+    //})
     // 声明测试用例库
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    //compile 'com.android.support.constraint:constraint-layout:+'
     testCompile 'junit:junit:4.12'
 }
