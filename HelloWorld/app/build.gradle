@@ -1,29 +1,44 @@
+// com.android.application表示这是一个应用程序模块；com.android.library表示这是一个库模块；
+// 应用程序是可以直接运行的，而库只能依赖于应用程序方可运行
 apply plugin: 'com.android.application'
 
 android {
+    // 指定项目的编译版本，25表示采用Android 7.1系统的SDK来进行编译
     compileSdkVersion 25
+    // 指定项目构建工具的版本
     buildToolsVersion "25.0.2"
     defaultConfig {
+        // 项目包名
         applicationId "name.siguoya.helloworld"
+        // 指定最低兼容的Android系统版本
         minSdkVersion 15
+        // 表明当前代码最高可以在安卓系统哪个版本上正常运行，值越大，新特性会越多
         targetSdkVersion 25
+        // 项目版本号
         versionCode 1
+        // 项目名称
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    //buildTypes下通常有debug和release两个属性，前者用于配置如何生成测试版安装包，后者用于配置正式版
     buildTypes {
         release {
+            // 指定是否对项目代码进行混淆
             minifyEnabled false
+            // 指定混淆时使用的规则文件，如下有两个文件，前者是全局混淆文件，后者是当前项目混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
-
+// 指定依赖
 dependencies {
+    //指定本地依赖：依赖libs目录下的所有jar文件
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    //指定远程依赖：依赖com.android.support.test.espresso域名下、版本为2.2.2的espresso-core库
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
+    // 声明测试用例库
     testCompile 'junit:junit:4.12'
 }

@@ -8,10 +8,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--注册HelloWorldActivity这个活动，没有在AndroidManifest.xml里面注册的活动是不能使用的-->
         <activity android:name=".HelloWorldActivity">
             <intent-filter>
+                <!--如下的action和category设置，表示HelloWorldActivity是这个项目的主活动-->
+                <!--然后在手机上点击应用图标，首先进入的就是这个活动-->
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
