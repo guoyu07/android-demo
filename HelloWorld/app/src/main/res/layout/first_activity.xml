@@ -20,5 +20,25 @@
         android:id="@+id/button_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="活动跳转" />
+        android:text="活动显式跳转到另一个活动" />
+    <Button
+        android:id="@+id/button_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动隐式跳转到另一个活动" />
+    <Button
+        android:id="@+id/button_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动隐式跳转之打开网页" />
+    <Button
+        android:id="@+id/button_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动显式跳转之拨打电话" />
+    <Button
+        android:id="@+id/button_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动显式跳转之显示地理位置" />
 </LinearLayout>
