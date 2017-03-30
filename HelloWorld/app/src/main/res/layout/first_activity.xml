@@ -41,4 +41,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="活动显式跳转之显示地理位置" />
+    <Button
+        android:id="@+id/button_9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动显式跳转之数据传输" />
+    <Button
+        android:id="@+id/button_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="调用能够回调数据的Activity" />
 </LinearLayout>

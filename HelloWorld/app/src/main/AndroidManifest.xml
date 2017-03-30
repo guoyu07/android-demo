@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="name.siguoya.helloworld">
+          package="name.siguoya.helloworld">
 
     <application
         android:allowBackup="true"
@@ -12,29 +12,35 @@
         <!-- 注册FirstActivity这个活动，没有在AndroidManifest.xml里面注册的活动是不能使用的 -->
         <activity android:name=".FirstActivity">
             <intent-filter>
+
                 <!-- 如下的action和category设置，表示HelloWorldActivity是这个项目的主活动 -->
                 <!-- 然后在手机上点击应用图标，首先进入的就是这个活动 -->
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity">
             <intent-filter>
-                <action android:name="name.siguoya.helloworld.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="name.siguoya.helloworld.MY_CATEGORY" />
+                <action android:name="name.siguoya.helloworld.ACTION_START"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="name.siguoya.helloworld.MY_CATEGORY"/>
             </intent-filter>
         </activity>
         <activity android:name=".ThirdActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <!--我们在这里定义此活动能够处理HTTP请求-->
-                <!--当用户在点击链接的时候，APP端将会出现弹窗，询问用户是用外部浏览器打开，还是用此活动来打开-->
-                <!--但是我们这个活动其实并不能真正处理HTTP请求以及加载页面内容的-->
-                <!--因此在有些容错机制比较好的系统中，并不会询问用户，依旧会默认使用外部浏览器打开-->
-                <data android:scheme="http" />
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!-- 我们在这里定义此活动能够处理HTTP请求 -->
+                <!-- 当用户在点击链接的时候，APP端将会出现弹窗，询问用户是用外部浏览器打开，还是用此活动来打开 -->
+                <!-- 但是我们这个活动其实并不能真正处理HTTP请求以及加载页面内容的 -->
+                <!-- 因此在有些容错机制比较好的系统中，并不会询问用户，依旧会默认使用外部浏览器打开 -->
+                <data android:scheme="http"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".FourthActivity">
         </activity>
     </application>
 

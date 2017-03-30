@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
+
         Button btn1=(Button) findViewById(R.id.button_1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +87,30 @@ public class FirstActivity extends AppCompatActivity {
 
             }
         });
+        Button btn9=(Button) findViewById(R.id.button_9);
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //活动跳转
+                Intent intent=new Intent(FirstActivity.this, SecondActivity.class);
+                intent.putExtra("args","传递参数");
+                startActivity(intent);
+
+            }
+        });
+        Button btn10=(Button) findViewById(R.id.button_10);
+        btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //活动跳转
+                Intent intent=new Intent(FirstActivity.this, FourthActivity.class);
+                //参数2用于判断回调的数据来源
+                startActivityForResult(intent,1);
+
+            }
+        });
+
+
     }
 
     //菜单注册事件
@@ -110,5 +136,19 @@ public class FirstActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode){
+            case 1:
+                if(resultCode==RESULT_OK){
+                    String returnData=data.getStringExtra("data_return");
+                    Toast.makeText(FirstActivity.this,"回调的数据是"+returnData,Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+
+        }
     }
 }
