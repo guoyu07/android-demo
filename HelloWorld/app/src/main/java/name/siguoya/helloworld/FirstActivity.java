@@ -1,5 +1,6 @@
 package name.siguoya.helloworld;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,12 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
-
+        Log.d(TAG, "onCreate: 创建活动");
+        if(savedInstanceState != null) {
+            //获取本页在销毁前保留的数据
+            String tempData=savedInstanceState.getString("data_key");
+            Log.d(TAG, "onCreate: 临时数据：" + tempData);
+        }
         Button btn1=(Button) findViewById(R.id.button_1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +99,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //活动跳转
                 Intent intent=new Intent(FirstActivity.this, SecondActivity.class);
-                intent.putExtra("args","传递参数");
+                intent.putExtra("args", "传递参数");
                 startActivity(intent);
 
             }
@@ -105,12 +111,32 @@ public class FirstActivity extends AppCompatActivity {
                 //活动跳转
                 Intent intent=new Intent(FirstActivity.this, FourthActivity.class);
                 //参数2用于判断回调的数据来源
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
 
             }
         });
+        Button btn12=(Button) findViewById(R.id.button_12);
+        btn12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //活动跳转
+                Intent intent=new Intent(FirstActivity.this, NormalActivity.class);
+                //参数2用于判断回调的数据来源
+                startActivity(intent);
 
+            }
+        });
+        Button btn14=(Button) findViewById(R.id.button_14);
+        btn14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //活动跳转
+                Intent intent=new Intent(FirstActivity.this, DialogActivity.class);
+                //参数2用于判断回调的数据来源
+                startActivity(intent);
 
+            }
+        });
     }
 
     //菜单注册事件
@@ -140,15 +166,59 @@ public class FirstActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(requestCode){
+        switch(requestCode) {
             case 1:
-                if(resultCode==RESULT_OK){
+                if(resultCode == RESULT_OK) {
                     String returnData=data.getStringExtra("data_return");
-                    Toast.makeText(FirstActivity.this,"回调的数据是"+returnData,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FirstActivity.this, "回调的数据是" + returnData, Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
 
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: 启动活动");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: 恢复活动");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: 暂停活动");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: 停止活动");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: 销毁活动");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: 重启活动");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //避免在用户启动其他活动的时候，由于本活动占用内存过高，被系统自动清理掉，用户再回到本活动时，丢失了信息或状态的情况
+        super.onSaveInstanceState(outState);
+        String tempData="你想持久化的数据";
+        outState.putString("data_key", tempData);
     }
 }

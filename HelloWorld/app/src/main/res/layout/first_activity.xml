@@ -51,4 +51,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="调用能够回调数据的Activity" />
+    <Button
+        android:id="@+id/button_12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动主活动" />
+    <Button
+        android:id="@+id/button_14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动对话框活动" />
 </LinearLayout>
